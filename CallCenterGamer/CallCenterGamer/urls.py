@@ -19,5 +19,7 @@ from online.views import Index,Inicio,Register,Login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Index)
+    path('', Index),
+    path('/Login/', Login),
+    path('/Register/', Register)
 ]
