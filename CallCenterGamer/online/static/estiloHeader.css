@@ -43,6 +43,26 @@
 }
 
 #ImgIzq{
-    background-color: red;
-    width: 500px;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    width: 700px;
+    position: absolute;
+    margin-top: 190px;
+    height: 410px;
+    background-image: url('img/GamerJugandopng.png');
+}
+
+#TextoDer{
+    float: right;
+    margin-top: 100px;
+    margin-right: 200px;
+    width: 250px;
+    height: 200px;
+}
+
+#TextoDer h1{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
 }
