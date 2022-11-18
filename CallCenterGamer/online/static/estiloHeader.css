@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+}
+
+#NavbarIzq{
+    height: 60px;
+    width: 100%;
+    background-color: rgb(78, 49, 225);
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+#NavbarIzq ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+#NavbarIzq ul li a{
+    color: white;
+    text-shadow:
+    0 0 7px #D7D1F8,
+    0 0 8px #D7D1F8,
+    0 0 11px #D7D1F8,
+    0 0 42px #8975EB,
+    0 0 82px #8975EB,
+    0 0 92px #8975EB,
+    0 0 102px #8975EB,
+    0 0 151px #8975EB;
+    cursor: pointer;
+}
+
+/* INICIO CSS INDEX */
+
+.Banner{
+    height: 600px;
+    width: 100%;
+    background-color: rgb(52, 32, 150);
+}
+
+#ImgIzq{
+    background-color: red;
+    width: 500px;
+}

@@ -1,7 +1,31 @@
 {% extends "componentes/header.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} Inicio {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="Banner">
+        <div id="ImgIzq">
+            <img src="{%static 'img/GamerJugandopng.png'%}">
+        </div>
+        <div id="TextoDer">
 
-{% block title %} asdas {% endblock %}
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
 
-{% block content %}
 
-{% endblock %}
+
+
+
+
+
