@@ -1,0 +1,12 @@
+{% extends "componentes/header.html" %}
+
+{% block title %} asdas {% endblock %}
+
+{% block content %}
+
+    <form method="POST">
+        {{form}}
+        {% csrf_token %}
+        <input value="Iniciar Sesion" type="submit">
+    </form>
+{% endblock %}
