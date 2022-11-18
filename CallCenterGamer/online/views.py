@@ -8,4 +8,4 @@ def Login(request):
 def Register(request):
     return render(request, "register.html")
 def Inicio(request):
-    return render(request, "idnicio.html")
+    return render(request, "inicio.html")
