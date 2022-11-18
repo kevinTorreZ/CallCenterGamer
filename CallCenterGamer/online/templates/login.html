@@ -1,0 +1,15 @@
+{% extends "componentes/header.html" %}
+
+{% block title %} asdas {% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <script>window.location.href = '/Inicio/';</script>
+    {% else %}
+    <form method="POST">
+        {{form}}
+        {% csrf_token %}
+        <input value="Iniciar Sesion" type="submit">
+    </form>
+    {% endif %}
+{% endblock %}

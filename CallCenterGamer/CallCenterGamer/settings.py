@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'CallCenterGamer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'CallCenterGamer', # database name
+        'USER': 'root', # user with access to that database
+        'PASSWORD': '', # password for the user
+        'HOST': 'localhost',   # if your database is hosted in another server then you should specify the host's IP
+        'PORT': '3306', # default MySQL port
     }
 }
 
@@ -123,3 +127,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'online.Usuario'
+LOGIN_URL = 'Login'
+LOGIN_REDIRECT_URL = '/Inicio/'
+LOGOUT_REDIRECT_URL = 'Login'
