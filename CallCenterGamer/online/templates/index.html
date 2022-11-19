@@ -5,18 +5,21 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'estiloHeader.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %} Inicio {% endblock %}
+    <title>{% block title %}Inicio{% endblock %}</title>
 </head>
 <body>
     {% block content %}
     <div class="Banner">
-        <div id="ImgIzq">
+        <div class="contLeft"></div>
+        <div class="contRight">
+            <h1>Bienvenido a Call of Gamers!</h1>
+            <p>Comunicate con el mejor call center gamer, nosotros te brindaremos la solución necesaria para tu problema, no dudes más!</p>
+            <div class="contBtn">
+                <button>Ingresar</button>
+            </div>
             
-        </div>
-        <div id="TextoDer">
-            <h1>Bienvenido a Call of Gamers</h1>
         </div>
     </div>
     {% endblock %}
