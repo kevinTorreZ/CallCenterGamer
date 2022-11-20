@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def IndexAdmin(request):
+    return render(request, "indexAdmin.html")

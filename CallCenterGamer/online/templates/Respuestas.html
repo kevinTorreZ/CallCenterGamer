@@ -1,0 +1,16 @@
+{% extends "componentes/header.html" %}
+
+{% block title %} asdas {% endblock %}
+
+{% block content %}
+
+    {{ Pregunta.Titulo}}
+    <hr>
+    {{ Pregunta.Pregunta}}
+
+    <form method="post">
+        {{form}}
+        {% csrf_token %}
+        <input type="submit" value="Ingrese su respuesta">
+    </form>
+{% endblock %}

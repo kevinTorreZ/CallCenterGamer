@@ -1,5 +1,5 @@
 from django import forms
-from online.models import Usuario
+from online.models import Usuario,Preguntas
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Ingrese su Contraseña'}), label='')
     password_2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar contraseña'}))
@@ -46,3 +46,15 @@ class LoginForm(forms.Form):
     Usuario = forms.CharField(label='',max_length=63, widget=forms.TextInput(attrs={'placeholder': 'Ingrese su usuario'}))
     password = forms.CharField(label='',max_length=63, widget=forms.PasswordInput(attrs={'placeholder': 'Ingrese su contraseña'}))
     remember_me = forms.BooleanField(label='Recordar contraseña', required=None)
+
+
+class PreguntasForm(forms.ModelForm):
+    class Meta:
+        model = Preguntas
+        fields = ['Titulo','Pregunta','Usuario']
+        widgets = {
+            'Titulo': forms.TextInput(attrs={'placeholder': 'Titulo'}),
+            'Pregunta': forms.Textarea(
+                attrs={'placeholder': 'Ingrese su pregunta'}),
+            'Usuario': forms.HiddenInput(),
+        }

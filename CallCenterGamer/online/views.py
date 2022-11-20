@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from online.forms import RegisterForm,LoginForm
+from online.forms import RegisterForm,LoginForm,PreguntasForm
 from django.views.generic import CreateView, FormView
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from online.models import Preguntas,Usuario
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'Register.html'
@@ -28,11 +29,25 @@ class LoginView(FormView):
             login(request, user)
             if not remember_me:
                             request.session.set_expiry(0)
-            return redirect('/Inicio/')
+            if user.admin:
+                return redirect('/Administracion/')
+            return redirect('/Inicio/' + str(user.id))
         return super(LoginView, self).form_invalid(form)
 
 def Index(request):
     return render(request, "index.html")
 @login_required()
-def Inicio(request):
-    return render(request, "inicio.html")
+def Inicio(request, id):
+    User = Usuario.objects.get(id=id)
+    preguntas = Preguntas.objects.filter(Usuario=User)
+    form = PreguntasForm(initial={'Usuario': id},)
+    if request.method == "POST":
+        guardarPregunta = Preguntas(Titulo=request.POST["Titulo"],Pregunta=request.POST["Pregunta"],Usuario=User)
+        guardarPregunta.save()
+        return redirect('/Inicio/' + str(id))
+    return render(request, "inicio.html", {"Preguntas":preguntas,"form":form})
+
+def ViewRespuestas(request,idPregunta):
+    pregunta = Preguntas.objects.get(idPregunta=idPregunta)
+
+    return render(request,"Respuestas.html",{"Pregunta":pregunta})

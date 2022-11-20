@@ -5,4 +5,18 @@
 {% block content %}
 
     <a href="/Logout/">Desconectarse</a>
+
+    <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
+    {% for pregunta in Preguntas %} 
+        <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
+            <a href="/Respuesta/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a>
+        </section>
+    {% endfor %}
+    <!-- INSERTAR PREGUNTAS -->
+
+    <form method="post">
+        {{form}}
+        {% csrf_token %}
+        <input type="submit" value="Insertar pregunta">
+    </form>
 {% endblock %}

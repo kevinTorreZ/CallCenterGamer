@@ -3,13 +3,9 @@
 {% block title %} asdas {% endblock %}
 
 {% block content %}
-    {% if user.is_authenticated %}
+    {% if user.admin == False %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% else %}
-    <form method="POST">
-        {{form}}
-        {% csrf_token %}
-        <input value="Iniciar Sesion" type="submit">
-    </form>
+        Es admin!
     {% endif %}
 {% endblock %}

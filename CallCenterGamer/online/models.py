@@ -97,4 +97,22 @@ class Usuario(AbstractBaseUser):
         "El usuario es un administrador?"
         return self.admin
     objects = UserManager()
+    def __str__(self):
+        return self.usuario
+
+
+####### ##############################################
+class Preguntas(models.Model):
+   idPregunta= models.AutoField(primary_key=True)
+   Titulo = models.CharField(max_length=60)
+   Pregunta = models.TextField()
+   Usuario= models.ForeignKey(Usuario, on_delete=models.CASCADE)
+   def __str__(self):
+       return str(self.idPregunta)+" "+self.Pregunta
+
+class Respuesta(models.Model):
+   idRespuesta= models.AutoField(primary_key=True)
+   id_Pregunta = models.ForeignKey(Preguntas, on_delete=models.CASCADE)
+   def __str__(self):
+       return str(self.idRespuesta)+" "+self.Pregunta
 
