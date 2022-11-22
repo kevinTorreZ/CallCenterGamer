@@ -89,6 +89,9 @@
     margin-top: 100px;
 }
 
-.contBtn button{
-
+#btnIngresar{
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 40px;
 }
