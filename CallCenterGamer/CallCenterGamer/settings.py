@@ -75,13 +75,23 @@ WSGI_APPLICATION = 'CallCenterGamer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql', 
+#         'NAME': 'CallCenterGamer', # database name
+#         'USER': 'root', # user with access to that database
+#         'PASSWORD': '', # password for the user
+#         'HOST': 'localhost',   # if your database is hosted in another server then you should specify the host's IP
+#         'PORT': '3306', # default MySQL port
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'CallCenterGamer', # database name
-        'USER': 'root', # user with access to that database
-        'PASSWORD': '', # password for the user
-        'HOST': 'localhost',   # if your database is hosted in another server then you should specify the host's IP
+        'NAME': 'coloreze_CallCenterGamer', # database name
+        'USER': 'coloreze_coloreze', # user with access to that database
+        'PASSWORD': 'Kkdvk122*', # password for the user
+        'HOST': 'colorez.es',   # if your database is hosted in another server then you should specify the host's IP
         'PORT': '3306', # default MySQL port
     }
 }
