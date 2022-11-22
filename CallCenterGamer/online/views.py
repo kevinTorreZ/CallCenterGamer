@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from online.forms import RegisterForm,LoginForm,PreguntasForm
+from online.forms import RegisterForm,LoginForm,PreguntasForm,RespuestaForm
 from django.views.generic import CreateView, FormView
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from online.models import Preguntas,Usuario
+from online.models import Preguntas,Usuario, Respuesta
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'Register.html'
@@ -49,5 +49,11 @@ def Inicio(request, id):
 
 def ViewRespuestas(request,idPregunta):
     pregunta = Preguntas.objects.get(idPregunta=idPregunta)
+    MostrarRespuestas = Respuesta.objects.filter(id_Pregunta=pregunta)
+    form = RespuestaForm(initial={'id_Pregunta': idPregunta},)
+    if request.method == "POST":
+        guardarRespuesta = Respuesta(Respuesta=request.POST["Respuesta"], id_Pregunta=pregunta)
+        guardarRespuesta.save()
+        return redirect('/Respuesta/' + str(idPregunta))
 
-    return render(request,"Respuestas.html",{"Pregunta":pregunta})
+    return render(request,"Respuestas.html",{"Pregunta":pregunta,"form":form,"Respuestas":MostrarRespuestas})

@@ -112,6 +112,7 @@ class Preguntas(models.Model):
 
 class Respuesta(models.Model):
    idRespuesta= models.AutoField(primary_key=True)
+   Respuesta = models.TextField()
    id_Pregunta = models.ForeignKey(Preguntas, on_delete=models.CASCADE)
    def __str__(self):
        return str(self.idRespuesta)+" "+self.Pregunta
