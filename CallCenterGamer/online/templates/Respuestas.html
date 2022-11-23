@@ -7,7 +7,12 @@
     {{ Pregunta.Titulo}}
     <hr>
     {{ Pregunta.Pregunta}}
-
+    <br>
+    R:
+    <br>
+    {% for Respuesta in Respuestas %}
+        {{ Respuesta.Respuesta }}
+    {% endfor %}
     <form method="post">
         {{form}}
         {% csrf_token %}

@@ -1,5 +1,5 @@
 from django import forms
-from online.models import Usuario,Preguntas
+from online.models import Usuario,Preguntas, Respuesta
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Ingrese su Contraseña'}), label='')
     password_2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar contraseña'}))
@@ -57,4 +57,14 @@ class PreguntasForm(forms.ModelForm):
             'Pregunta': forms.Textarea(
                 attrs={'placeholder': 'Ingrese su pregunta'}),
             'Usuario': forms.HiddenInput(),
+        }
+
+class RespuestaForm(forms.ModelForm):
+    class Meta:        
+        model = Respuesta
+        fields = ['Respuesta','id_Pregunta']
+        widgets = {
+            'Respuesta': forms.Textarea(
+                attrs={'placeholder': 'Ingrese su Respuesta'}),
+            'id_Pregunta': forms.HiddenInput(),
         }
