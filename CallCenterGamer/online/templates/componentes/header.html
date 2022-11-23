@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     {% block links %}
     {% endblock %}
@@ -10,13 +11,14 @@
     <link rel="stylesheet" href="{% static 'estiloHeader.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body>
     <nav>
         <div id="NavbarIzq">
             <a id="logo">Logo profesional</a>
-            <ul> 
+            <ul>
                 <li><a>Inicio</a></li>
-                <li><a>Inicio</a></li>
+                <li><a>Sexo</a></li>
                 <li><a>Inicio</a></li>
             </ul>
         </div>
@@ -25,4 +27,5 @@
     <!-- Colcar archivos js aca -->
     {% block js %}{% endblock js %}
 </body>
+
 </html>
