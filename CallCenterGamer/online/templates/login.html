@@ -20,7 +20,9 @@
         {% if user.is_authenticated %}
         <script>window.location.href = '/Inicio/{{ user.id }}';</script>
         {% else %}
-        <form method="POST">
+        <h2>Iniciar sesión</h2>
+        <hr>
+        <form id="Formulario" method="POST">
             {{form}}
             {% csrf_token %}
             <input value="Iniciar Sesion" type="submit">
