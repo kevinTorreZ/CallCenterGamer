@@ -9,7 +9,8 @@
         <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
         {% for pregunta in Preguntas %} 
             <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
-                <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a><a href="/BorrarPregunta/{{ pregunta.idPregunta }}"  onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><h1>Borrar</h1></a>
+                <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a><a href="/BorrarPregunta/{{ user.id }}/{{ pregunta.idPregunta }}"  onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><h1>Borrar</h1></a>
+                <h4>{{pregunta.Fecha_creacion}}</h1>
             </section>
         {% endfor %}
         <!-- INSERTAR PREGUNTAS -->

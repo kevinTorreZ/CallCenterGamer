@@ -41,9 +41,10 @@ def Index(request):
 def Inicio(request, id):
     User = Usuario.objects.get(id=id)
     preguntas = Preguntas.objects.filter(Usuario=User)
+    now = datetime.now()
     form = PreguntasForm(initial={'Usuario': id},)
     if request.method == "POST":
-        guardarPregunta = Preguntas(Titulo=request.POST["Titulo"],Pregunta=request.POST["Pregunta"],Usuario=User)
+        guardarPregunta = Preguntas(Titulo=request.POST["Titulo"],Pregunta=request.POST["Pregunta"],Usuario=User, Fecha_creacion=now)
         guardarPregunta.save()
         return redirect('/Inicio/' + str(id))
     return render(request, "inicio.html", {"Preguntas":preguntas,"form":form,"id":id})
@@ -52,11 +53,10 @@ def ViewRespuestas(request,idUser,idPregunta):
     pregunta = Preguntas.objects.get(idPregunta=idPregunta)
     User = Usuario.objects.get(id=idUser)
     now = datetime.now()
-    print(now)
     MostrarRespuestas = Respuesta.objects.filter(id_Pregunta=pregunta)
     form = RespuestaForm(initial={'id_Pregunta': idPregunta,'Usuario': pregunta.Usuario.id},)
     if request.method == "POST":
-        guardarRespuesta = Respuesta(Respuesta=request.POST["Respuesta"], id_Pregunta=pregunta, Usuario=User)
+        guardarRespuesta = Respuesta(Respuesta=request.POST["Respuesta"], id_Pregunta=pregunta, Usuario=User, FechaHora=now)
         guardarRespuesta.save()
         return redirect('/Respuesta/' + str(idUser) +  "/" + str(idPregunta))
 

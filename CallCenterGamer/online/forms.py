@@ -51,12 +51,13 @@ class LoginForm(forms.Form):
 class PreguntasForm(forms.ModelForm):
     class Meta:
         model = Preguntas
-        fields = ['Titulo','Pregunta','Usuario']
+        fields = ['Titulo','Pregunta','Usuario','Fecha_creacion']
         widgets = {
             'Titulo': forms.TextInput(attrs={'placeholder': 'Titulo'}),
             'Pregunta': forms.Textarea(
                 attrs={'placeholder': 'Ingrese su pregunta'}),
             'Usuario': forms.HiddenInput(),
+            'Fecha_creacion': forms.HiddenInput(),
         }
 
 class RespuestaForm(forms.ModelForm):
