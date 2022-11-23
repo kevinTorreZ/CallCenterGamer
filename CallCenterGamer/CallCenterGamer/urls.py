@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from online.views import Index,Inicio,RegisterView,LoginView,ViewRespuestas
-from administracion.views import IndexAdmin
+from administracion.views import IndexAdmin,BorrarPregunta
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -27,5 +27,6 @@ urlpatterns = [
     path('Register/', RegisterView.as_view(), name='Register'),
     path('Inicio/<int:id>', Inicio),
     path('Logout/', LogoutView.as_view(template_name='logout.html'), name='Logout'),
-    path('Respuesta/<int:idPregunta>', ViewRespuestas)
+    path('Respuesta/<int:idUser>/<int:idPregunta>', ViewRespuestas),
+    path('BorrarPregunta/<int:idUser>/<int:idPregunta>', BorrarPregunta),
 ]

@@ -3,20 +3,26 @@
 {% block title %} asdas {% endblock %}
 
 {% block content %}
+    {% if user.id == id  and user.admin == False %}
+        <a href="/Logout/">Desconectarse</a>
 
-    <a href="/Logout/">Desconectarse</a>
+        <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
+        {% for pregunta in Preguntas %} 
+            <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
+                <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a><a href="/BorrarPregunta/{{ pregunta.idPregunta }}"  onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><h1>Borrar</h1></a>
+            </section>
+        {% endfor %}
+        <!-- INSERTAR PREGUNTAS -->
 
-    <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
-    {% for pregunta in Preguntas %} 
-        <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
-            <a href="/Respuesta/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a>
-        </section>
-    {% endfor %}
-    <!-- INSERTAR PREGUNTAS -->
-
-    <form method="post">
-        {{form}}
-        {% csrf_token %}
-        <input type="submit" value="Insertar pregunta">
-    </form>
+        <form method="post">
+            {{form}}
+            {% csrf_token %}
+            <input type="submit" value="Insertar pregunta">
+        </form>
+    {% else %}
+        {% if user.admin %}
+            <script>window.location.href = '/Administracion/';</script>
+        {% endif %}
+        <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% endif %}
 {% endblock %}

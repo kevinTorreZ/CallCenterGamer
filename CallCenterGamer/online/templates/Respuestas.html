@@ -3,15 +3,20 @@
 {% block title %} asdas {% endblock %}
 
 {% block content %}
-
-    {{ Pregunta.Titulo}}
+    {% if user.id != Pregunta.Usuario.id %}
+    <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% endif %}
+    Titulo: {{ Pregunta.Titulo}}
     <hr>
-    {{ Pregunta.Pregunta}}
+    Pregunta: {{ Pregunta.Pregunta}}
     <br>
     R:
     <br>
     {% for Respuesta in Respuestas %}
-        {{ Respuesta.Respuesta }}
+        <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
+            <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+        </section>
+        
     {% endfor %}
     <form method="post">
         {{form}}

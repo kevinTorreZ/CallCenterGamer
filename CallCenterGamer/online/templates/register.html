@@ -1,5 +1,7 @@
 {% extends "componentes/header.html" %}
-
+{% load static %}
+{% block links%}
+{% endblock %}
 {% block title %} asdas {% endblock %}
 
 {% block content %}
@@ -11,5 +13,11 @@
         {% csrf_token %}
         <input value="Registrarse" type="submit">
     </form>
+    <div class="nashe">
+        <h1>asd</h1>
+    </div>
     {% endif %}
 {% endblock %}
+
+{% block js %}
+{% endblock js %}

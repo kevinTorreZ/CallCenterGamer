@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from datetime import datetime
 from online.forms import RegisterForm,LoginForm,PreguntasForm,RespuestaForm
 from django.views.generic import CreateView, FormView
 from django.contrib.auth import authenticate, login
@@ -45,15 +46,18 @@ def Inicio(request, id):
         guardarPregunta = Preguntas(Titulo=request.POST["Titulo"],Pregunta=request.POST["Pregunta"],Usuario=User)
         guardarPregunta.save()
         return redirect('/Inicio/' + str(id))
-    return render(request, "inicio.html", {"Preguntas":preguntas,"form":form})
+    return render(request, "inicio.html", {"Preguntas":preguntas,"form":form,"id":id})
 
-def ViewRespuestas(request,idPregunta):
+def ViewRespuestas(request,idUser,idPregunta):
     pregunta = Preguntas.objects.get(idPregunta=idPregunta)
+    User = Usuario.objects.get(id=idUser)
+    now = datetime.now()
+    print(now)
     MostrarRespuestas = Respuesta.objects.filter(id_Pregunta=pregunta)
-    form = RespuestaForm(initial={'id_Pregunta': idPregunta},)
+    form = RespuestaForm(initial={'id_Pregunta': idPregunta,'Usuario': pregunta.Usuario.id},)
     if request.method == "POST":
-        guardarRespuesta = Respuesta(Respuesta=request.POST["Respuesta"], id_Pregunta=pregunta)
+        guardarRespuesta = Respuesta(Respuesta=request.POST["Respuesta"], id_Pregunta=pregunta, Usuario=User)
         guardarRespuesta.save()
-        return redirect('/Respuesta/' + str(idPregunta))
+        return redirect('/Respuesta/' + str(idUser) +  "/" + str(idPregunta))
 
     return render(request,"Respuestas.html",{"Pregunta":pregunta,"form":form,"Respuestas":MostrarRespuestas})
