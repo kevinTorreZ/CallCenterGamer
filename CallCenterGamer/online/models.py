@@ -106,6 +106,7 @@ class Preguntas(models.Model):
    idPregunta= models.AutoField(primary_key=True)
    Titulo = models.CharField(max_length=60)
    Pregunta = models.TextField()
+   Fecha_creacion = models.DateTimeField()
    Usuario= models.ForeignKey(Usuario, on_delete=models.CASCADE)
    def __str__(self):
        return str(self.idPregunta)+" "+self.Pregunta

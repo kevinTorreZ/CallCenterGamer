@@ -3,7 +3,7 @@
 {% block title %} asdas {% endblock %}
 
 {% block content %}
-    {% if user.id != Pregunta.Usuario.id %}
+    {% if user.id != Pregunta.Usuario.id and user.admin == False %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
     Titulo: {{ Pregunta.Titulo}}
@@ -15,6 +15,7 @@
     {% for Respuesta in Respuestas %}
         <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
             <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+            <h4>{{ Respuesta.FechaHora }}</h4>
         </section>
         
     {% endfor %}
