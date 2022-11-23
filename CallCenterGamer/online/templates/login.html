@@ -1,15 +1,32 @@
 {% extends "componentes/header.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
 
-{% block title %} asdas {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'estiloHeader.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %} Login {% endblock %}
+</head>
 
-{% block content %}
-    {% if user.is_authenticated %}
-    <script>window.location.href = '/Inicio/{{ user.id }}';</script>
-    {% else %}
-    <form method="POST">
-        {{form}}
-        {% csrf_token %}
-        <input value="Iniciar Sesion" type="submit">
-    </form>
-    {% endif %}
-{% endblock %}
+<body>
+    {% block content %}
+    <div class="mainLogin">
+        {% if user.is_authenticated %}
+        <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+        {% else %}
+        <form method="POST">
+            {{form}}
+            {% csrf_token %}
+            <input value="Iniciar Sesion" type="submit">
+        </form>
+        {% endif %}
+    </div>
+
+    {% endblock %}
+
+</body>
+
+</html>
