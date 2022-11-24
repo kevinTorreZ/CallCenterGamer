@@ -15,3 +15,6 @@ def BorrarPregunta(request, idUser, idPregunta):
         return redirect("/Administracion/")
     else:
         return redirect("/Inicio/" + str(User.id))
+
+def RegistroStaff(request):
+    return render(request, "RegisterStaff.html")
