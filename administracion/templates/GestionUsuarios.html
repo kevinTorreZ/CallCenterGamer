@@ -56,7 +56,7 @@
                         <input type="hidden" value="{{ Usuario.id }}" name="Userid">
                         <input type="hidden" value="Falasdsse" name="Elimnar_user" id="Elimnar_user">
                         <td><button type="submit">Modificar</button></td>
-                        <td><a href="/EliminarUsuario/{{Usuario.id}}">Eliminar</a></td>
+                        <td><a href="/EliminarUsuario/{{Usuario.id}}" onclick="return confirm('¿Estas seguro de borrar la pregunta?')">Eliminar</a></td>
                     </tr>
                 </form>
             {% endfor %}
