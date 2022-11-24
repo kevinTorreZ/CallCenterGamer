@@ -1,25 +1,40 @@
 {% extends "componentes/header.html" %}
-
-{% block title %} asdas {% endblock %}
-
-{% block content %}
+{% load static %}
+{% block links%}
+<link rel="stylesheet" href="{% static 'inicio.css' %}">
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} Inicio {% endblock %}
+</head>
+<body>
+    {% block content %}
     {% if user.id == id  and user.admin == False %}
         <a href="/Logout/">Desconectarse</a>
 
         <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
+        <div id="Titulo">
+            <h2>Historial de preguntas</h2>
+        </div>
+        
         {% for pregunta in Preguntas %} 
-            <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
+            <section class="Preguntas">
                 <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a><a href="/BorrarPregunta/{{ user.id }}/{{ pregunta.idPregunta }}"  onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><h1>Borrar</h1></a>
                 <h4>{{pregunta.Fecha_creacion}}</h1>
             </section>
         {% endfor %}
         <!-- INSERTAR PREGUNTAS -->
-
-        <form method="post">
-            {{form}}
-            {% csrf_token %}
-            <input type="submit" value="Insertar pregunta">
-        </form>
+        <div class="InsPreguntas">
+            <form method="post">
+                {{form}}
+                {% csrf_token %}
+                <input type="submit" value="Insertar pregunta">
+            </form>
+        </div>
     {% else %}
         {% if user.admin %}
             <script>window.location.href = '/Administracion/';</script>
@@ -27,3 +42,7 @@
         <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
 {% endblock %}
+</body>
+</html>
+
+
