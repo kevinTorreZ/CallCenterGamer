@@ -15,7 +15,6 @@
 <body>
     <nav>
         <div class="MainNav">
-           
             <div id="NavbarIzq">
                 <ul>
                     <a id="logo" href="/">Logo profesional</a>
@@ -23,10 +22,17 @@
                 </ul>
             </div>
             <div id="NavbarDer">
+                {% if user.is_authenticated %}
+                <ul>
+                    <li><a href="/Logout/">Desconectarse</a></li>
+                </ul>
+                    
+                {% else%}
                 <ul>
                     <li><a href="/Login/">Iniciar sesión</a></li>
                     <li><a href="/Register/">Registrarse</a></li>
                 </ul>
+                {% endif %}
             </div>
         </div>
         
