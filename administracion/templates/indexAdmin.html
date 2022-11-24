@@ -6,12 +6,12 @@
     {% if user.admin == False and user.tecnico == False%}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% else %}
-        <a href="/Logout/">Desconectarse</a>
         {% for pregunta in Preguntas %} 
             <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
                 <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a>
                 {% if user.admin %}
                 <a href="/BorrarPregunta/{{ user.id }}/{{ pregunta.idPregunta }}" onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><h1>Borrar</h1></a>
+                <a href="/ModificarPregunta/{{ pregunta.idPregunta }}"><h1>Modificar</h1></a>
                 {% endif %}
             </section>
         {% endfor %}

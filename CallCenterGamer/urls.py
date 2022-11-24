@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from online.views import Index,Inicio,RegisterView,LoginView,ViewRespuestas
-from administracion.views import IndexAdmin,BorrarPregunta,GestionUsuarios,EliminarUsuario
+from administracion.views import IndexAdmin,BorrarPregunta,GestionUsuarios,EliminarUsuario,ModificarPregunta
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -30,5 +30,6 @@ urlpatterns = [
     path('Respuesta/<int:idUser>/<int:idPregunta>', ViewRespuestas),
     path('BorrarPregunta/<int:idUser>/<int:idPregunta>', BorrarPregunta),
     path('GestionUsuarios/', GestionUsuarios),
-    path('EliminarUsuario/<int:idUser>', EliminarUsuario)
+    path('EliminarUsuario/<int:idUser>', EliminarUsuario),
+    path('ModificarPregunta/<int:idPregunta>', ModificarPregunta)
 ]

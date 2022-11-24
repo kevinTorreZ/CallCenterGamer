@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from online.models import Preguntas,Usuario
+from online.forms import PreguntasForm
 @login_required()
 def IndexAdmin(request):
     ListaPreguntas = Preguntas.objects.all()
@@ -44,3 +45,12 @@ def EliminarUsuario(request,idUser):
         User = Usuario.objects.get(id=idUser)
         User.delete()
     return redirect('/GestionUsuarios/')
+def ModificarPregunta(request,idPregunta):
+    Pregunta = Preguntas.objects.get(idPregunta=idPregunta)
+    form = PreguntasForm(request,instance=Pregunta)
+    if request.method == 'POST':
+        form = PreguntasForm(request.POST, instance=Pregunta)
+        if form.is_valid():
+            form.save()
+        return redirect('/Administracion/')
+    return render(request, "ModificarPregunta.html", {"form":form})
