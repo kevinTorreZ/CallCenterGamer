@@ -12,9 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %} Inicio {% endblock %}
 </head>
-
-<body>
-    {% block content %}
+{% block content %}
+<body style="background-color:rgb(240, 240, 240);">
+  
     {% if user.id == id and user.admin == False %}
 
     <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
@@ -58,7 +58,7 @@
     {% endif %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
-    {% endblock %}
+   
 </body>
-
+{% endblock %}
 </html>

@@ -18,13 +18,16 @@
 .Preguntas{
     width: 450px;
     height: 60px;
-    border: 3px solid rgba(78, 49, 225, 0.7);
     border-radius: 5px;
     margin: 0 auto;
     margin-top: 15px;
     font-family: "DM Sans", sans-serif;
     background-color: white;
     color: rgb(52, 32, 150);
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.2);
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .MainPreguntas{
@@ -34,10 +37,11 @@
     max-height: 800px;
     border-radius: 5px;
     padding-bottom: 15px;
-    border: 3px solid rgb(52, 32, 150);
+    border: 1px solid rgb(52, 32, 150);
     box-shadow: 0px 0px 5px 2px rgba(78, 49, 225, 0.7);
     height: auto;
     float: left;
+    background-color: rgb(244, 247, 248);
 }
 
 #Titulo{
@@ -50,7 +54,6 @@
     margin-top: 50px;
     width: 800px;
     height: auto;
-    background-color: blue;
     float: right;
 }
 
