@@ -1,16 +1,15 @@
 from django import forms
 from online.models import Usuario,Preguntas, Respuesta
 class RegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Ingrese su Contraseña'}), label='')
     password_2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar contraseña'}))
     class Meta:
         model = Usuario
-        fields = ['usuario','correo','rut']
+        fields = ['usuario','correo','rut','password']
         widgets = {
             'correo': forms.TextInput(attrs={'placeholder': 'Ingrese su correo'}),
             'usuario': forms.TextInput(
                 attrs={'placeholder': 'Ingrese su usuario'}),
-            'contraseña': forms.PasswordInput(
+            'password': forms.PasswordInput(
                 attrs={'placeholder': 'Ingrese su contraseña'}),
             'rut': forms.TextInput(
                 attrs={'placeholder': 'Ingrese su rut'})
