@@ -5,43 +5,60 @@
 {% endblock %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %} Inicio {% endblock %}
 </head>
+
 <body>
     {% block content %}
-    {% if user.id == id  and user.admin == False %}
+    {% if user.id == id and user.admin == False %}
 
-        <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
-        <div id="Titulo">
-            <h2>Historial de tus preguntas</h2>
+    <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
+   
+    <div class="MainTodo">
+        <div class="MainPreguntar">
+            <div class="InsPreguntas">
+                <form method="post">
+                    {{form}}
+                    {% csrf_token %}
+                    <input type="submit" value="Insertar pregunta">
+                </form>
+            </div>
         </div>
-        
-        {% for pregunta in Preguntas %} 
-            <section class="Preguntas">
-                <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>Titulo:{{pregunta.Titulo}}</h1></a><a href="/BorrarPregunta/{{ user.id }}/{{ pregunta.idPregunta }}"  onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><h1>Borrar</h1></a>
+        <div class="MainPreguntas">
+            <div id="Titulo">
+                <h2>Historial de tus preguntas</h2>
+            </div>
+            {% for pregunta in Preguntas %}
+            <div class="Preguntas">
+                <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}">
+                    <h1>Titulo:{{pregunta.Titulo}}</h1>
+                </a><a href="/BorrarPregunta/{{ user.id }}/{{ pregunta.idPregunta }}"
+                    onclick="return confirm('¿Estas seguro de borrar la pregunta?')">
+                    <h1>Borrar</h1>
+                </a>
                 <h4>{{pregunta.Fecha_creacion}}</h1>
-            </section>
-        {% endfor %}
-        <!-- INSERTAR PREGUNTAS -->
-        <div class="InsPreguntas">
-            <form method="post">
-                {{form}}
-                {% csrf_token %}
-                <input type="submit" value="Insertar pregunta">
-            </form>
+                
+            </div>
+            {% endfor %}
         </div>
+       
+        <!-- INSERTAR PREGUNTAS -->
+       
+    </div>
+    
+    
     {% else %}
-        {% if user.admin %}
-            <script>window.location.href = '/Administracion/';</script>
-        {% endif %}
-        <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% if user.admin %}
+    <script>window.location.href = '/Administracion/';</script>
     {% endif %}
-{% endblock %}
+    <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% endif %}
+    {% endblock %}
 </body>
+
 </html>
-
-
