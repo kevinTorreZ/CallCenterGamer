@@ -47,7 +47,7 @@ def EliminarUsuario(request,idUser):
     return redirect('/GestionUsuarios/')
 def ModificarPregunta(request,idPregunta):
     Pregunta = Preguntas.objects.get(idPregunta=idPregunta)
-    form = PreguntasForm(request,instance=Pregunta)
+    form = PreguntasForm(instance=Pregunta)
     if request.method == 'POST':
         form = PreguntasForm(request.POST, instance=Pregunta)
         if form.is_valid():
