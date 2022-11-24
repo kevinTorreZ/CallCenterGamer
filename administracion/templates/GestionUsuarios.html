@@ -1,0 +1,66 @@
+{% extends "componentes/header.html" %}
+
+{% block title %} asdas {% endblock %}
+
+{% if user.is_authenticated %}
+    {% block content %}
+        {% if user.admin == False%}
+            {% if user.tecnico == False %}}
+                <script>window.location.href = '/administracion/';</script>
+            {% endif %}
+            <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+        {% endif %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Rut</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Tecnico</th>
+                <th scope="col">Ultima Conexión</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for Usuario in Usuarios %}
+                <form method="post">
+                    {% csrf_token %}
+                    <tr>
+                        <th scope="row">{{ Usuario.id }}</th>
+                        <td>{{ Usuario.usuario }}</td>
+                        <td>{{ Usuario.Nombre }}</td>
+                        <td>{{ Usuario.apellido }}</td>
+                        <td>{{ Usuario.correo }}</td>
+                        <td>{{ Usuario.rut }}</td>
+                        {% if Usuario.activo %}
+                            <td><input type="checkbox" checked name="activo"/></td>
+                        {% else %}
+                            <td><input type="checkbox" name="activo"/></td>
+                        {% endif %}
+                        {% if Usuario.admin %}
+                            <td><input type="checkbox" checked name="admin"/></td>
+                        {% else %}
+                            <td><input type="checkbox" name="admin"/></td>
+                        {% endif %}
+                        {% if Usuario.tecnico %}
+                            <td><input type="checkbox" checked name="tecnico"/></td>
+                        {% else %}
+                            <td><input type="checkbox" name="tecnico"/></td>
+                        {% endif %}
+                        <td>{{ Usuario.last_login }}</td>
+                        <input type="hidden" value="{{ Usuario.id }}" name="Userid">
+                        <input type="hidden" value="Falasdsse" name="Elimnar_user" id="Elimnar_user">
+                        <td><button type="submit">Modificar</button></td>
+                        <td><a href="/EliminarUsuario/{{Usuario.id}}">Eliminar</a></td>
+                    </tr>
+                </form>
+            {% endfor %}
+            </tbody>
+          </table>
+    {% endblock %}
+{% endif%}

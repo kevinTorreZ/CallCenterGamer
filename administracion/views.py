@@ -8,13 +8,39 @@ def IndexAdmin(request):
     return render(request, "indexAdmin.html", {"Preguntas":ListaPreguntas})
 
 def BorrarPregunta(request, idUser, idPregunta):
-    Pregunta = Preguntas.objects.get(idPregunta=idPregunta)
     User = Usuario.objects.get(id=idUser)
-    Pregunta.delete()
     if User.admin:
+        Pregunta = Preguntas.objects.get(idPregunta=idPregunta)
+        Pregunta.delete()
         return redirect("/Administracion/")
     else:
+        if User.tecnico:
+            return redirect("/Administracion/")
         return redirect("/Inicio/" + str(User.id))
-
-def RegistroStaff(request):
-    return render(request, "RegisterStaff.html")
+@login_required()
+def GestionUsuarios(request):
+    Usuarios = Usuario.objects.all()
+    if request.method == "POST":
+        user = request.POST.get('Userid', False)
+        activo = request.POST.get('activo', False)
+        admin = request.POST.get('admin', False)
+        tecnico = request.POST.get('tecnico', False)
+        if admin:
+            admin = True
+        if activo:
+            activo = True
+        if tecnico:
+            tecnico = True
+        print(request.POST.get('Elimnar_user', False))
+        userchange = Usuario.objects.get(id=user)
+        userchange.admin = admin
+        userchange.activo = activo
+        userchange.tecnico = tecnico
+        userchange.save()
+    return render(request, "GestionUsuarios.html",{"Usuarios":Usuarios})
+@login_required()
+def EliminarUsuario(request,idUser):
+    if request.user.admin:
+        User = Usuario.objects.get(id=idUser)
+        User.delete()
+    return redirect('/GestionUsuarios/')
