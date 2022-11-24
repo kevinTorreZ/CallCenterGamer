@@ -13,9 +13,7 @@
 </head>
 <body>
     {% block content %}
-    {% if user.id == id  and user.admin == False %}
-        <a href="/Logout/">Desconectarse</a>
-
+    {% if user.id == id  and user.admin == False and user.tecnico == False %}
         <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
         <div id="Titulo">
             <h2>Historial de preguntas</h2>
@@ -23,7 +21,7 @@
         
         {% for pregunta in Preguntas %} 
             <section class="Preguntas">
-                <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a><a href="/BorrarPregunta/{{ user.id }}/{{ pregunta.idPregunta }}"  onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><h1>Borrar</h1></a>
+                <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}"><h1>{{pregunta.Titulo}}</h1></a>
                 <h4>{{pregunta.Fecha_creacion}}</h1>
             </section>
         {% endfor %}
@@ -36,7 +34,7 @@
             </form>
         </div>
     {% else %}
-        {% if user.admin %}
+        {% if user.admin or user.tecnico %}
             <script>window.location.href = '/Administracion/';</script>
         {% endif %}
         <script>window.location.href = '/Inicio/{{ user.id }}';</script>

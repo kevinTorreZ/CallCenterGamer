@@ -48,4 +48,5 @@
 
 .InsPreguntas textarea{
     display: block;
+    resize: none;
 }

@@ -14,7 +14,7 @@
 <body>
     {% block content %}
     {% if user.is_authenticated %}
-    {% if user.admin %}
+    {% if user.admin  or user.tecnico %}
     <script>window.location.href = '/Administracion/';</script>
     {% endif %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>

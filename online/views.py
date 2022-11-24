@@ -13,7 +13,9 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         request = self.request
         login(request, form.save())
-        return redirect('/Inicio/')
+        if request.user.admin:
+                return redirect('/Administracion/')
+        return redirect('/Inicio/' + str(request.user.id))
 class LoginView(FormView):
     form_class = LoginForm
     template_name = 'login.html'
@@ -30,7 +32,7 @@ class LoginView(FormView):
             login(request, user)
             if not remember_me:
                             request.session.set_expiry(0)
-            if user.admin:
+            if user.admin or user.tecnico:
                 return redirect('/Administracion/')
             return redirect('/Inicio/' + str(user.id))
         return super(LoginView, self).form_invalid(form)

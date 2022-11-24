@@ -4,7 +4,7 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 class UserManager(BaseUserManager):
-    def create_user(self, correo,usuario=None, password=None,fecha_nacimiento=None,nombre=None,apellido=None,rut=None, admin=False, activo=True):
+    def create_user(self, correo,usuario=None, password=None,fecha_nacimiento=None,nombre=None,apellido=None,rut=None, admin=False,tecnico=False, activo=True):
         if not correo:
             raise ValueError('deben tener correos')
         if not Usuario:
@@ -20,6 +20,7 @@ class UserManager(BaseUserManager):
         )
         user.set_password(password)
         user.admin = admin
+        user.tecnico = tecnico
         user.activo = activo
         user.save()
         return user
@@ -65,7 +66,7 @@ class Usuario(AbstractBaseUser):
     )
     activo = models.BooleanField(default=True)
     admin = models.BooleanField(default=False) 
-
+    tecnico = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'usuario'
     REQUIRED_FIELDS = ['correo','rut']
@@ -74,9 +75,6 @@ class Usuario(AbstractBaseUser):
         return self.correo
 
     def get_short_name(self):
-        return self.correo
-
-    def __str__(self):
         return self.correo
 
     def has_perm(self, perm, obj=None):
