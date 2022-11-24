@@ -91,7 +91,7 @@ class Usuario(AbstractBaseUser):
 
     @property
     def is_tecnico_master(self):
-        "El usuario es tecnico?"
+        "El usuario es tecnico?asd"
         return self.tecnico_master
 
     @property
