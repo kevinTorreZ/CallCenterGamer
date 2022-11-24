@@ -14,14 +14,22 @@
 
 <body>
     <nav>
-        <div id="NavbarIzq">
-            <a id="logo">Logo profesional</a>
-            <ul>
-                <li><a>Inicio</a></li>
-                <li><a>Inicio</a></li>
-                <li><a>Inicio</a></li>
-            </ul>
+        <div class="MainNav">
+           
+            <div id="NavbarIzq">
+                <ul>
+                    <a id="logo" href="/">Logo profesional</a>
+                    <li><a href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div id="NavbarDer">
+                <ul>
+                    <li><a href="/Login/">Iniciar sesión</a></li>
+                    <li><a href="/Register/">Registrarse</a></li>
+                </ul>
+            </div>
         </div>
+        
     </nav>
     {% block content %}{% endblock %}
     <!-- Colcar archivos js aca -->

@@ -1,22 +1,25 @@
 {% extends "componentes/header.html" %}
 {% load static %}
 {% block links%}
+<link rel="stylesheet" href="{% static 'register.css' %}">
 {% endblock %}
 {% block title %} asdas {% endblock %}
 
 {% block content %}
+<div class="MainRegister">
     {% if user.is_authenticated %}
     <script>window.location.href = '/Inicio/';</script>
     {% else %}
-    <form method="POST">
+    <h2>Registrarse</h2>
+    <form id="Formulario" method="POST">
         {{form}}
         {% csrf_token %}
-        <input value="Registrarse" type="submit">
+        <input value="Registrarse" oninput="checkRut(rut)" type="submit">
+        
     </form>
-    <div class="nashe">
-        <h1>asd</h1>
-    </div>
-    {% endif %}
+    <p>¿Ya tienes cuenta? <a href="/Login/">Ingresa ya!</a></p>
+</div>
+{% endif %}
 {% endblock %}
 
 {% block js %}
