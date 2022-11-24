@@ -1,0 +1,15 @@
+{% extends "componentes/header.html" %}
+
+{% block title %} asdas {% endblock %}
+
+{% block content %}
+    {% if user.admin == False and user.tecnico == False%}
+    <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% else %}
+        <form method="post">
+            {{form}}
+            {% csrf_token %}
+            <input type="submit" value="Modificar pregunta">
+        </form>
+    {% endif %}
+{% endblock %}
