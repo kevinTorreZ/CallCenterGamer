@@ -1,27 +1,43 @@
 {% extends "componentes/header.html" %}
-
-{% block title %} asdas {% endblock %}
-
+{% load static %}
+{% block links%}
+<link rel="stylesheet" href="{% static 'respuestas.css' %}">
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} Respuestas {% endblock %}
+</head>
 {% block content %}
+<body>
     {% if user.id != Pregunta.Usuario.id and user.admin == False %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
-    {% endif %}
-    Titulo: {{ Pregunta.Titulo}}
-    <hr>
-    Pregunta: {{ Pregunta.Pregunta}}
-    <br>
-    R:
-    <br>
-    {% for Respuesta in Respuestas %}
-        <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
-            <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
-            <h4>{{ Respuesta.FechaHora }}</h4>
-        </section>
-        
-    {% endfor %}
-    <form method="post">
-        {{form}}
-        {% csrf_token %}
-        <input type="submit" value="Ingrese su respuesta">
-    </form>
+    <div class="MainRespuestas">
+        {% endif %}
+        Titulo: {{ Pregunta.Titulo}}
+        <hr>
+        Pregunta: {{ Pregunta.Pregunta}}
+        <br>
+        R:
+        <br>
+        {% for Respuesta in Respuestas %}
+            <section>
+                <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+                <h4>{{ Respuesta.FechaHora }}</h4>
+            </section>
+            
+        {% endfor %}
+        <form method="post">
+            {{form}}
+            {% csrf_token %}
+            <input type="submit" value="Ingrese su respuesta">
+        </form>
+    </div>
+</body>
 {% endblock %}
+</html>
+
+

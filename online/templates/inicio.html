@@ -13,12 +13,10 @@
     {% block title %} Inicio {% endblock %}
 </head>
 {% block content %}
-<body style="background-color:rgb(240, 240, 240);">
-  
-    {% if user.id == id and user.admin == False %}
 
+<body style="background-color:rgb(240, 240, 240);">
+    {% if user.id == id and user.admin == False %}
     <!-- LISTAR PREGUNTAS RELACIONADAS CON EL USUARIO  -->
-   
     <div class="MainTodo">
         <div class="MainPreguntar">
             <div class="InsPreguntas">
@@ -36,25 +34,22 @@
             {% for pregunta in Preguntas %}
             <div class="Preguntas">
                 <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}">
-                    <h1>Titulo:{{pregunta.Titulo}}</h1>
-                <h4>{{pregunta.Fecha_creacion}}</h1>
-                
+                    <h1>Titulo: {{pregunta.Titulo}}</h1>
+                    <h4>Fecha: {{pregunta.Fecha_creacion}}</h1>
             </div>
             {% endfor %}
         </div>
-       
-        <!-- INSERTAR PREGUNTAS -->
-       
     </div>
-    
-    
+
+
     {% else %}
     {% if user.admin %}
     <script>window.location.href = '/Administracion/';</script>
     {% endif %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
-   
+
 </body>
 {% endblock %}
+
 </html>
