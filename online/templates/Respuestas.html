@@ -1,33 +1,55 @@
 {% extends "componentes/header.html" %}
+{% load static %}
+{% block links%}
+<link rel="stylesheet" href="{% static 'respuestas.css' %}">
+{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %} asdas {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {% block title %} Respuestas {% endblock %}
+</head>
 {% block content %}
+
+<body>
     {% if user.id != Pregunta.Usuario.id and user.admin == False %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
-    Titulo: {{ Pregunta.Titulo}}
-    <hr>
-    Pregunta: {{ Pregunta.Pregunta}}
-    <br>
-    R:
-    <br>
-    {% for Respuesta in Respuestas %}
-        {% if Respuesta.Usuario.id == user.id %}
-            <section style="display: flex;flex-direction:column; border: 1px solid rgb(0, 37, 247); margin: 20px; resize: none; width: 300px; margin-left: 600px;">
-                <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+    <h2 id="Titulopreg">{{Pregunta.Titulo}}</h2>
+    <div class="MainRespuestas">
+        <div class="divRespuestas">
+            {% for Respuesta in Respuestas %}
+            {% if Respuesta.Usuario.id == user.id %}
+            <div class="dRespuestas">
+                <h1>{{Respuesta.Usuario}}</h1>
+                <p>{{ Respuesta.Respuesta }}</p>
                 <h4>{{ Respuesta.FechaHora }}</h4>
-            </section>
-        {% else%}
-            <section style="display: flex;flex-direction:column; border: 1px solid rgb(235, 9, 9);; margin: 20px; resize: none; width: 300px;">
-                <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+            </div>
+            {% else %}
+            <div class="dRespuestasOtro">
+                <h1>{{Respuesta.Usuario}}</h1>
+                <p>{{ Respuesta.Respuesta }}</p>
                 <h4>{{ Respuesta.FechaHora }}</h4>
-            </section> 
-        {% endif %}    
-    {% endfor %}
-    <form method="post">
-        {{form}}
-        {% csrf_token %}
-        <input type="submit" value="Ingrese su respuesta">
-    </form>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    
+        <form method="post">
+            <div class="TextArea">
+                {{form}}
+                <button id="btnSend" type="submit"><i class="fa-solid fa-paper-plane fa-xl"></i></button>
+            </div>
+            {% csrf_token %}
+
+        </form>
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/c1366bcc7f.js" crossorigin="anonymous"></script>
 {% endblock %}
+
+</html>
