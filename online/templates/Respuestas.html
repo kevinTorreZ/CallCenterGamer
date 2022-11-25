@@ -16,7 +16,7 @@
     {% if user.id != Pregunta.Usuario.id and user.admin == False %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
-    <h2 id="Titulopreg"><strong>Pregunta: </strong>{{Pregunta.Titulo}}</h2>
+    <h2 id="Titulopreg">{{Pregunta.Titulo}}</h2>
     <div class="MainRespuestas">
         {% for Respuesta in Respuestas %}
             <section>

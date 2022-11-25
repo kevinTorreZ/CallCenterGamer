@@ -2,14 +2,15 @@
 
 #Titulopreg{
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-family: "DM Sans", sans-serif;
     color: rgb(52, 32, 150);
-    font-weight: normal;
     margin-top: 15px;
 }
 
 .MainRespuestas{
+    background-image: url('./img/bg-chat-tile-dark_a4be512e7195b6b733d9110b408f075d.png');
+    background-color: rgb(240, 242, 245);
     border-radius: 5px;
     margin-top: 20px;
     width: 1280px;
@@ -27,17 +28,28 @@
     resize: none;
     width: 500px;
     border-radius: 10px;
-    height: 40px;
+    height: 35px;
     outline: none;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    margin-left: 50px;
+    padding-left: 15px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    padding-top: 15px;
+    max-height: 60px;
 }
 
 .TextArea{
     width: auto;
-    height: 50px;
+    height: 65px;
     width: 100%;
     position: absolute;
     bottom: 0px;
-    background-color: rgb(240, 242, 245);
+    background-color: rgb(241, 241, 241);
+    border-top: 1.5px solid rgba(160, 161, 163, 0.5);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     display: flex;
     align-items: center;
 }
