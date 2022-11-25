@@ -36,16 +36,17 @@
             </div>
             {% endif %}
             {% endfor %}
-        </div>
-    
+        </div> 
         <form method="post">
             <div class="TextArea">
                 {{form}}
                 <button id="btnSend" type="submit"><i class="fa-solid fa-paper-plane fa-xl"></i></button>
             </div>
             {% csrf_token %}
-
         </form>
+    </div>
+    <div class="divPregunta">
+        <p>{{Pregunta.Pregunta}}</p> 
     </div>
 </body>
 <script src="https://kit.fontawesome.com/c1366bcc7f.js" crossorigin="anonymous"></script>
