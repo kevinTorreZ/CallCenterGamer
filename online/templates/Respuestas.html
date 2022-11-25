@@ -25,14 +25,13 @@
             {% for Respuesta in Respuestas %}
             {% if Respuesta.Usuario.id == user.id %}
             <div class="dRespuestas">
-                <h1>{{Respuesta.Usuario}}</h1>
-                <p style="width: 300px;">{{ Respuesta.Respuesta }}</p>
+                <p>{{ Respuesta.Respuesta }}</p>
                 <h4>{{ Respuesta.FechaHora }}</h4>
             </div>
             {% else %}
             <div class="dRespuestasOtro">
                 <h1>{{Respuesta.Usuario}}</h1>
-                <p style="width: 300px;">{{ Respuesta.Respuesta }}</p>
+                <p>{{ Respuesta.Respuesta }}</p>
                 <h4>{{ Respuesta.FechaHora }}</h4>
             </div>
             {% endif %}
