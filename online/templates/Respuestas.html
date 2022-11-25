@@ -38,7 +38,7 @@
             </div>
             {% endif %}
             {% endfor %}
-        </div> 
+        </div>
         <form method="post">
             <div class="TextArea">
                 {{form}}
@@ -70,6 +70,13 @@
     </div>
     
 </body>
+<script>
+    document.getElementById('id_Respuesta').onkeydown = function (e) {
+        if(e.key == "Enter"){
+            document.getElementById('btnSend').click()
+        }
+    }
+</script> 
 <script src="https://kit.fontawesome.com/c1366bcc7f.js" crossorigin="anonymous"></script>
 <script>
     function cambiarColor(NuevoColor){
