@@ -75,26 +75,26 @@ WSGI_APPLICATION = 'CallCenterGamer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql', 
-#         'NAME': 'CallCenterGamer', # database name
-#         'USER': 'root', # user with access to that database
-#         'PASSWORD': '', # password for the user
-#         'HOST': 'localhost',   # if your database is hosted in another server then you should specify the host's IP
-#         'PORT': '3306', # default MySQL port
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'CallCenterGamer', # database name
-        'USER': 'doadmin', # user with access to that database
-        'PASSWORD': 'AVNS_1M3g0r87pXR1QiLFixW', # password for the user
-        'HOST': 'db-mysql-nyc3-87591-do-user-12846138-0.b.db.ondigitalocean.com',   # if your database is hosted in another server then you should specify the host's IP
-        'PORT': '25060', # default MySQL port
+        'USER': 'root', # user with access to that database
+        'PASSWORD': '', # password for the user
+        'HOST': 'localhost',   # if your database is hosted in another server then you should specify the host's IP
+        'PORT': '3306', # default MySQL port
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql', 
+#         'NAME': 'CallCenterGamer', # database name
+#         'USER': 'doadmin', # user with access to that database
+#         'PASSWORD': 'AVNS_1M3g0r87pXR1QiLFixW', # password for the user
+#         'HOST': 'db-mysql-nyc3-87591-do-user-12846138-0.b.db.ondigitalocean.com',   # if your database is hosted in another server then you should specify the host's IP
+#         'PORT': '25060', # default MySQL port
+#     }
+# }
 
 
 # Password validation
