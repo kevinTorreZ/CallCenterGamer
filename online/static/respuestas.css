@@ -11,11 +11,16 @@
 
 .MainRespuestas{
     border-radius: 5px;
-    margin: 50px auto;
+    margin-top: 20px;
     width: 1280px;
     height: 700px;
     border: 1px solid rgb(52, 32, 150);
     box-shadow: 0px 0px 5px 2px rgba(78, 49, 225, 0.5);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .MainRespuestas textarea{
@@ -27,9 +32,12 @@
 }
 
 .TextArea{
-    width: 100%;
+    width: auto;
     height: 50px;
-    background-color: red;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background-color: rgb(240, 242, 245);
     display: flex;
     align-items: center;
 }
