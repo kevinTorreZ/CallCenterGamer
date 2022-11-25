@@ -51,9 +51,9 @@ class PreguntasForm(forms.ModelForm):
         model = Preguntas
         fields = ['Titulo','Pregunta','Usuario','Fecha_creacion']
         widgets = {
-            'Titulo': forms.TextInput(attrs={'placeholder': 'Titulo'}),
+            'Titulo': forms.TextInput(attrs={'placeholder': ''}),
             'Pregunta': forms.Textarea(
-                attrs={'placeholder': 'Ingrese su pregunta'}),
+                attrs={'placeholder': ''}),
             'Usuario': forms.HiddenInput(),
             'Fecha_creacion': forms.HiddenInput(),
         }
@@ -64,7 +64,7 @@ class RespuestaForm(forms.ModelForm):
         fields = ['Respuesta','id_Pregunta','Usuario','FechaHora']
         widgets = {
             'Respuesta': forms.Textarea(
-                attrs={'placeholder': 'Ingrese su Respuesta'}),
+                attrs={'placeholder': '', 'maxlength': '200'}),
             'id_Pregunta': forms.HiddenInput(),
             'Usuario': forms.HiddenInput(),
             'FechaHora': forms.HiddenInput(),
