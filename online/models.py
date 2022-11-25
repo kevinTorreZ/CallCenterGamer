@@ -111,7 +111,7 @@ class Preguntas(models.Model):
 
 class Respuesta(models.Model):
    idRespuesta= models.AutoField(primary_key=True)
-   Respuesta = models.TextField()
+   Respuesta = models.TextField(verbose_name='')
    id_Pregunta = models.ForeignKey(Preguntas, on_delete=models.CASCADE)
    Usuario= models.ForeignKey(Usuario, on_delete=models.CASCADE)
    FechaHora = models.DateTimeField()
