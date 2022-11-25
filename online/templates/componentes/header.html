@@ -17,10 +17,10 @@
         <div class="MainNav">
             <div id="NavbarIzq">
                 <ul>
-                    <a id="logo" href="/">Logo profesional</a>
+                    <a id="logo" href="/"><img width="180px" src="{% static './img/LOGITO.png'%}"></a>
                     <li><a href="/">Inicio</a></li>
                     {% if user.admin %}
-                        <li><a href="/GestionUsuarios/">Gestion de usuarios</a></li>
+                    <li><a href="/GestionUsuarios/">Gestion de usuarios</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -29,7 +29,7 @@
                 <ul>
                     <li><a href="/Logout/"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                 </ul>
-                    
+
                 {% else%}
                 <ul>
                     <li><a href="/Login/">Iniciar sesión</a></li>
@@ -38,8 +38,10 @@
                 {% endif %}
             </div>
         </div>
-        
+
     </nav>
+
+
     {% block content %}{% endblock %}
     <!-- Colcar archivos js aca -->
     {% block js %}{% endblock js %}

@@ -5,7 +5,7 @@
 {% endblock %}
 <!DOCTYPE html>
 <html lang="en">
-{% block content %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,36 +14,35 @@
 </head>
 
 <body>
-    
+    {% block content %}
     {% if user.admin == False and user.tecnico == False%}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% else %}
     <h1 id="Titulo">Preguntas de los usuarios</h1>
-    {% for pregunta in Preguntas %}
+    <div class="Container">
         <table>
-            <th scope="col">Titulo</th>
-            <th scope="col">Usuario</th>
+            <thead>
+                <tr>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Usuario</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pregunta in Preguntas %}
+                <tr id="ModifTable">
+                    <th scope="row"><a href="/Respuesta/{{user.id}}/{{pregunta.idPregunta}}">{{pregunta.Titulo}}</a></th>
+                    <th scope="row">{{pregunta.Usuario}}</th>
+                    {% if user.admin %}
+                    <th scope="row"><a href="/BorrarPregunta/{{user.id}}/{{pregunta.idPregunta}}" onclick="return confirm('¿Estas seguro de borrar la pregunta?')"><i class="fa-regular fa-trash-can"></i></a></th>
+                    <th scope="row"><a href="/ModificarPregunta/{{pregunta.idPregunta}}"><i class="fa-solid fa-pen"></i></a></th>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
         </table>
-        <tbody>
-            <td>{{pregunta.Titulo}}</td>
-            <td>{{pregunta.Usuario}}</td>
-        </tbody>
-        <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}">
-            <h1>Titulo: <label>{{pregunta.Titulo}}</label></h1>
-            <h1>Usuario: <label>{{pregunta.Usuario}}</label></h1>
-        </a>
-        {% if user.admin %}
-        <div>
-            <a href="/BorrarPregunta/{{ user.id }}/{{ pregunta.idPregunta }}"
-                onclick="return confirm('¿Estas seguro de borrar la pregunta?')">
-                <h1>Borrar</h1>
-            </a>
-            <a href="/ModificarPregunta/{{ pregunta.idPregunta }}">
-                <h1>Modificar</h1>
-            </a>
-        </div>
-        {% endif %}
-    {% endfor %}
+    </div>
     {% endif %}
     {% endblock %}
 </body>

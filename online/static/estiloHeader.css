@@ -6,6 +6,11 @@
     margin: 0;
 }
 
+body{
+
+    min-height: 100vh;
+}
+
 .MainNav{
     height: 60px;
     width: 100%;
