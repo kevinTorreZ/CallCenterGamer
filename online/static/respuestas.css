@@ -77,15 +77,37 @@
     margin-top: 10px;
     margin-left: 750px;
     border-radius: 15px;
-    color: black;
+    color: white;
     border: none;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.5);
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: rgb(240, 242, 245);
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    background-color: rgb(52, 32, 150);
     display: flex;
     flex-direction: column;
+    overflow-wrap: break-word;
+}
+
+.dRespuestas h1 {
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    color: white;
+    width: 120px;
+}
+
+.dRespuestas p {
+    font-size: 15px;
+    font-family: "DM Sans", sans-serif;
+}
+
+.dRespuestas h4{
+    display: inline;
+    float: right;
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 100;
 }
 
 .dRespuestasOtro {
@@ -99,41 +121,34 @@
     color: black;
     border: none;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.5);
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
     background-color: rgb(240, 242, 245);
+    overflow-wrap: break-word;
 }
 
 .dRespuestasOtro h1 {
     font-family: "DM Sans", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: black;
     width: 120px;
 }
 
 .dRespuestasOtro p {
-    width: 350px !important;
-    height: auto;
     font-size: 15px;
-    height: auto;
     font-family: "DM Sans", sans-serif;
 }
 
-.dRespuestas h1 {
+.dRespuestasOtro h4{
+    display: inline;
+    float: right;
     font-family: "DM Sans", sans-serif;
-    font-size: 20px;
-    color: black;
-    width: 120px;
+    font-size: 12px;
+    font-weight: 100;
 }
 
-.dRespuestas p {
-    width: 350px !important;
-    height: auto;
-    font-size: 15px;
-    height: auto;
-    font-family: "DM Sans", sans-serif;
-}
 
 ::-webkit-scrollbar {
     width: 10px;
