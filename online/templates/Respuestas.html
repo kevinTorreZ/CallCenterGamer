@@ -13,11 +13,17 @@
     R:
     <br>
     {% for Respuesta in Respuestas %}
-        <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
-            <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
-            <h4>{{ Respuesta.FechaHora }}</h4>
-        </section>
-        
+        {% if Respuesta.Usuario.id == user.id %}
+            <section style="display: flex;flex-direction:column; border: 1px solid rgb(0, 37, 247); margin: 20px; resize: none; width: 300px; margin-left: 600px;">
+                <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+                <h4>{{ Respuesta.FechaHora }}</h4>
+            </section>
+        {% else%}
+            <section style="display: flex;flex-direction:column; border: 1px solid rgb(235, 9, 9);; margin: 20px; resize: none; width: 300px;">
+                <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+                <h4>{{ Respuesta.FechaHora }}</h4>
+            </section> 
+        {% endif %}    
     {% endfor %}
     <form method="post">
         {{form}}

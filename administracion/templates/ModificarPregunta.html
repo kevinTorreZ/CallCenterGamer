@@ -3,8 +3,11 @@
 {% block title %} asdas {% endblock %}
 
 {% block content %}
-    {% if user.admin == False and user.tecnico == False%}
-    <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% if user.admin == False%}
+        {% if user.tecnico == True %}
+            <script>window.location.href = '/Administracion/';</script>
+        {% endif%}
+            <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% else %}
         <form method="post">
             {{form}}
