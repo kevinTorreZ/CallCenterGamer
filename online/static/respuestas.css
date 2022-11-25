@@ -1,5 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+#Titulopreg{
+    text-align: center;
+    font-size: 30px;
+    font-family: "DM Sans", sans-serif;
+    color: rgb(52, 32, 150);
+    font-weight: normal;
+    margin-top: 15px;
+}
+
 .MainRespuestas{
+    border-radius: 5px;
+    margin: 50px auto;
+    width: 1280px;
+    height: 700px;
+    border: 1px solid rgb(52, 32, 150);
+    box-shadow: 0px 0px 5px 2px rgba(78, 49, 225, 0.5);
+}
+
+.MainRespuestas textarea{
+    resize: none;
+    width: 500px;
+    border-radius: 10px;
+    height: 40px;
+    outline: none;
+}
+
+.TextArea{
+    width: 100%;
+    height: 50px;
     background-color: red;
-    width: 100px;
-    height: 10px;
+    display: flex;
+    align-items: center;
 }

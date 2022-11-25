@@ -15,14 +15,9 @@
 <body>
     {% if user.id != Pregunta.Usuario.id and user.admin == False %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
+    {% endif %}
+    <h2 id="Titulopreg"><strong>Pregunta: </strong>{{Pregunta.Titulo}}</h2>
     <div class="MainRespuestas">
-        {% endif %}
-        Titulo: {{ Pregunta.Titulo}}
-        <hr>
-        Pregunta: {{ Pregunta.Pregunta}}
-        <br>
-        R:
-        <br>
         {% for Respuesta in Respuestas %}
             <section>
                 <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
@@ -31,9 +26,13 @@
             
         {% endfor %}
         <form method="post">
-            {{form}}
+            <div class="TextArea">
+                {{form}}
+                <input type="submit" value="Ingrese su respuesta">
+            </div>
+            
             {% csrf_token %}
-            <input type="submit" value="Ingrese su respuesta">
+            
         </form>
     </div>
 </body>
