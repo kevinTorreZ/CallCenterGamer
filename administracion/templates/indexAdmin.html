@@ -12,13 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Administración{% endblock %}</title>
 </head>
+
 <body>
     {% block content %}
     {% if user.admin == False and user.tecnico == False%}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% else %}
+    <h1 id="Titulo">Preguntas de los usuarios</h1>
     {% for pregunta in Preguntas %}
-    <section style="display: flex;flex-direction:column; border: 1px solid black; margin: 20px; resize: none;">
+    <div class="Main">
         <a href="/Respuesta/{{ user.id }}/{{pregunta.idPregunta}}">
             <h1>{{pregunta.Titulo}}</h1>
         </a>
@@ -31,9 +33,12 @@
             <h1>Modificar</h1>
         </a>
         {% endif %}
-    </section>
+    </div>
+
+
     {% endfor %}
     {% endif %}
     {% endblock %}
 </body>
+
 </html>
