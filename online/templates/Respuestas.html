@@ -15,7 +15,7 @@
 {% block content %}
 
 <body>
-    {% if user.id != Pregunta.Usuario.id and user.admin == False %}
+    {% if user.id != Pregunta.Usuario.id and user.admin == False and user.tecnico == False%}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
     <div class="MainRespuestas" id="FondoColores">
@@ -76,9 +76,6 @@
         const elem = document.getElementById('FondoColores');
         elem.style.backgroundColor = NuevoColor;
     }
-</script>
-<script>
-    $("element").animate({scrollTop : $("FondoColores").height()},1);
 </script>
 {% endblock %}
 
