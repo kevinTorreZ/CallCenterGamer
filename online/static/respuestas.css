@@ -233,12 +233,12 @@
 .dRespuestasOtro h1 {
     font-family: "DM Sans", sans-serif;
     font-size: 18px;
-    color: black;
-    width: 120px;
+    color: rgb(52, 32, 150);
+    width: auto;
 }
 
 .dRespuestasOtro p {
-    font-size: 15px;
+    font-size: 14px;
     font-family: "DM Sans", sans-serif;
 }
 
