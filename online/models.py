@@ -43,7 +43,7 @@ class Usuario(AbstractBaseUser):
     )
     rut = models.CharField(
         verbose_name='',
-        max_length=11,
+        max_length=12,
         unique=True,
     )
     correo = models.EmailField(
