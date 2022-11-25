@@ -5,38 +5,43 @@
 {% endblock %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     {% block title %} Respuestas {% endblock %}
 </head>
 {% block content %}
+
 <body>
     {% if user.id != Pregunta.Usuario.id and user.admin == False %}
     <script>window.location.href = '/Inicio/{{ user.id }}';</script>
     {% endif %}
     <h2 id="Titulopreg">{{Pregunta.Titulo}}</h2>
     <div class="MainRespuestas">
-        {% for Respuesta in Respuestas %}
-            <section>
-                <h1>{{ Respuesta.Respuesta }}</h1> | Respuesta escrita por: {{Respuesta.Usuario}}
+        <div class="divRespuestas">
+            {% for Respuesta in Respuestas %}
+            <div class="dRespuestas">
+                <h1>{{Respuesta.Usuario}}</h1>
+                <p>{{ Respuesta.Respuesta }}</p>
                 <h4>{{ Respuesta.FechaHora }}</h4>
-            </section>
-            
-        {% endfor %}
+            </div> 
+            {% endfor %}
+        </div>
+    
         <form method="post">
             <div class="TextArea">
                 {{form}}
-                <input type="submit" value="Ingrese su respuesta">
+                <button id="btnSend" type="submit"><i class="fa-solid fa-paper-plane fa-xl"></i></button>
             </div>
-            
             {% csrf_token %}
-            
+
         </form>
     </div>
 </body>
+<script src="https://kit.fontawesome.com/c1366bcc7f.js" crossorigin="anonymous"></script>
 {% endblock %}
+
 </html>
-
-

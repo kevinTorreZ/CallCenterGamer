@@ -64,7 +64,7 @@ class RespuestaForm(forms.ModelForm):
         fields = ['Respuesta','id_Pregunta','Usuario','FechaHora']
         widgets = {
             'Respuesta': forms.Textarea(
-                attrs={'placeholder': ''}),
+                attrs={'placeholder': '', 'maxlength': '200'}),
             'id_Pregunta': forms.HiddenInput(),
             'Usuario': forms.HiddenInput(),
             'FechaHora': forms.HiddenInput(),
