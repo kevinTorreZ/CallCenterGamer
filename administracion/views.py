@@ -38,6 +38,7 @@ def GestionUsuarios(request):
         userchange.activo = activo
         userchange.tecnico = tecnico
         userchange.save()
+        return redirect('/GestionUsuarios/')
     return render(request, "GestionUsuarios.html",{"Usuarios":Usuarios})
 @login_required()
 def EliminarUsuario(request,idUser):
